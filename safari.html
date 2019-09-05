@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Learning JavaScript</title>
+    </head>
+    <body>
+        <form id="register-form"> 
+            <input id="name" type="text" placeholder="Name" value=""/>
+            <input id="pw" type="text" value=""/></br></br>
+            <input id="login_btn_1" type="button" value="LocalStorageSubmit" onClick="store()"/></br>
+        </form>
+			<h2> Local Storage </h2>
+			<input id="login_btn_2" type="button" value="LocalStorageCheck" onClick="check()"/>
+			<input id="login_btn_3" type="button" value="LocalStorageClear" onClick="clearStorage()"/></br>
+			<h2> Session Storage </h2>
+			<input id="login_btn_5" type="button" value="SessionStorageCheck" onClick="checkSession()"/>
+			<input id="login_btn_4" type="button" value="SessionStorageClear" onClick="clearSession()"/> 
+		</br></br>
+	   <a href="safari_1.html" >Next page</a></br></br>
+		<h2> User Agnet Info </h2>
+		<input id="login_btn_1_5" type="button" value="GetUserAgentInfo" onClick="getUserAgentInfo()"/>
+		<p id="useragent"> </p>
+
+    <script type="text/javascript" language="javascript">
+	
+	function clearStorage() {
+		localStorage.clear();
+	}
+	function clearSession() {
+		sessionStorage.clear();
+	}
+
+		// storing input from register-form
+		function store() {
+			localStorage.setItem('browser', document.getElementById('name').value);
+			localStorage.setItem('device', document.getElementById('pw').value);
+		}
+
+		// check if stored data from register-form is equal to entered data in the   login-form
+		function check() {
+
+			// stored data from the register-form
+			var storedName = localStorage.getItem('browser');
+			var storedPw = localStorage.getItem('device');
+
+			
+				alert('browser:' + storedName + ' and device:' +storedPw);
+		}
+		function checkSession() {
+
+			// stored data from the register-form
+			var storedName = sessionStorage.getItem('browser');
+			var storedPw = sessionStorage.getItem('device');
+
+			
+				alert('browser:' + storedName + ' and device:' +storedPw);
+		}
+		
+		function getUserAgentInfo(){
+			var info = navigator.userAgent;
+			document.getElementById('useragent').innerHTML = info;
+		}
+	</script>
+
+    </body>
+</html>

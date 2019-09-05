@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Learning JavaScript</title>
+    </head>
+    <body>
+        <form id="register-form"> 
+            <input id="name" type="text" placeholder="Name" value=""/>
+            <input id="pw" type="text" value=""/></br></br>
+            <input id="login_btn" type="button" value="SessionStorageSubmit" onClick="store()"/>
+        </form>
+
+        <form id="login-form">
+			<h2> Session Storage </h2>
+			<input id="login_btn_1" type="button" value="SessionStorageCheck" onClick="check()"/>
+			<input id="login_btn_3" type="button" value="SessionStorageClear" onClick="clearSession()"/>
+			</br>
+			<h2> Local Storage </h2>
+			<input id="login_btn_1" type="button" value="LocalStorageCheck" onClick="previous()"/>
+			<input id="login_btn_1_4" type="button" value="LocalStorageClear" onClick="clearStorage()"/>
+			</br></br>
+			<a href="safari.html" >Back</a></br></br>
+			<h2> User Agnet Info </h2>
+			<input id="login_btn_1_5" type="button" value="GetUserAgentInfo" onClick="getUserAgentInfo()"/>
+			<p id="useragent"> </p>
+       </form>
+
+    <script type="text/javascript" language="javascript">
+	
+	var name = document.getElementById('name');
+		var pw = document.getElementById('pw');
+		
+		function clearSession() {
+			sessionStorage.clear();
+		}
+		function clearStorage() {
+			localStorage.clear();
+		}
+
+		// storing input from register-form
+		function store() {
+			sessionStorage.setItem('browser', document.getElementById('name').value);
+			sessionStorage.setItem('device', document.getElementById('pw').value);
+		}
+
+		// check if stored data from register-form is equal to entered data in the   login-form
+		function check() {
+
+			// stored data from the register-form
+			var storedName = sessionStorage.getItem('browser');
+			var storedPw = sessionStorage.getItem('device');
+
+			
+				alert('browser:' + storedName + ' and device:' +storedPw);
+		}
+		function previous() {
+
+			// stored data from the register-form
+			var browser = localStorage.getItem('browser');
+			var device = localStorage.getItem('device');
+
+			
+				alert('browser:' + browser + ' and device:' +device);
+		}
+		
+		function getUserAgentInfo(){
+			var info = navigator.userAgent;
+			document.getElementById('useragent').innerHTML = info;
+		}
+	</script>
+
+    </body>
+</html>
